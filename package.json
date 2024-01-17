@@ -1,0 +1,21 @@
+{
+  "name": "pvmount-tool",
+  "version": "1.0.0",
+  "description": "standalone tool that mounts azure secrets",
+  "main": "pvmount.js",
+  "scripts": {
+    "run": "node pvmount.js $1",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "pkg pvmount.js --output pvmount"
+  },
+  "dependencies": {
+    "@azure/identity": "^3.2.2",
+    "@azure/keyvault-secrets": "^4.7.0",
+    "commander": "^11.1.0"
+  },
+  "bin": {
+    "pvmount": "./pvmount.js"
+  },
+  "author": "Sonny Lloyd",
+  "license": "ISC"
+}
