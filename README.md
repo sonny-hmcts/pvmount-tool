@@ -89,3 +89,8 @@ the configurations to take place without a reboot and then for safty the tool wi
 #### Why Delete synthetic.conf
 
 Although the tool should create the perfect file any sort of issue inside synthetic.conf will prevent Mac OS from booting. it is saver for pvmount to delete the file after it is done forcing a mount. The downside to this is that the pvmount commands has to be run again if a reboot has taken place. going forward a command could be added to turn off auto deletetion of the synthetic.conf file if your feeling lucky it wont break the boot. 
+
+
+### Notice
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
