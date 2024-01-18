@@ -44,16 +44,6 @@ if (!namespace || !environment) {
 
 console.log(`Mounting with Namespace: ${namespace}, Environment: ${environment} to folder location ${mount}`);
 
-//async function createSyntheticLink() {
-//    fs.writeFile(syntheticPath, fileContents, (err) => {
-//        if (err) {
-//          console.error(`Error writing ${filePath}: ${err.message}`);
-//        } else {
-//          console.log(`${syntheticPath} has been created with the specified content. Please reboot your machine for the changes to take effect.`);
-//        }
-//    });
-//}
-
 async function mountSecrets(vaultName, nameSpace, outputDir = null) {
     if (!outputDir) {
       throw new Error('mount point is required');
