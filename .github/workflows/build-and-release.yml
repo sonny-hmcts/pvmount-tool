@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Build application for macOS
-        run: npx pkg pvmount.js --output pvmount --target node18-macos-x64
+        run: npx pkg pvmount.js --output ./pvmount/pvmount --target node18-macos-x64
 
       - name: Create GitHub Release
         id: create_release
