@@ -24,9 +24,6 @@ jobs:
       - name: Build application for macOS
         run: npx pkg . --output pvmount --target node18-macos-x64
 
-      - name: Rename compiled app
-        run: mv pvmount/app pvmount/pvmount
-
   release:
     needs: build
     runs-on: ubuntu-latest
