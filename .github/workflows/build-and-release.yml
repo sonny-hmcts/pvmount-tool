@@ -25,7 +25,7 @@ jobs:
         run: npx pkg pvmount.js --output pvmount --target node18-macos-x64
 
       - name: Check the built file exists
-        run: ls -la ./pvmount
+        run: cd ./pvmount && ls -l
 
   release:
     needs: build
