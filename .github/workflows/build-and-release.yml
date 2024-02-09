@@ -1,0 +1,63 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.16.0'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build application for macOS
+        run: npx pkg . --output pvmount --target node18-macos-x64
+
+      - name: Rename compiled app
+        run: mv pvmount/app pvmount/pvmount
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload release artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: pvmount
+          path: ./pvmount
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}
+          body: |
+            Changes in this Release:
+            - Describe your changes here
+          draft: false
+          prerelease: false
+
+      - name: Upload release artifact
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./pvmount/pvmount
+          asset_name: pvmount
+          asset_content_type: application/octet-stream
