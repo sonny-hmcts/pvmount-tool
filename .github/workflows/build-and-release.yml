@@ -24,9 +24,6 @@ jobs:
       - name: Build application for macOS
         run: npx pkg pvmount.js --output pvmount --target node18-macos-x64
 
-      - name: Check the built file exists
-        run: cd ./pvmount && ls -l
-
   release:
     needs: build
     runs-on: ubuntu-latest
@@ -58,6 +55,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./pvmount/pvmount
+          asset_path: ./pvmount
           asset_name: pvmount
           asset_content_type: application/octet-stream
