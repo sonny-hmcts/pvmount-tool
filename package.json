@@ -17,5 +17,8 @@
     "pvmount": "./pvmount.js"
   },
   "author": "Sonny Lloyd",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "pkg": "^5.8.1"
+  }
 }
