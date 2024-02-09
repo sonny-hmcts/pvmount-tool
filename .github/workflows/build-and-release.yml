@@ -24,6 +24,18 @@ jobs:
       - name: Build application for macOS
         run: npx pkg pvmount.js --output pvmount --target node18-macos-x64
 
+      - name: Tag commit with version
+        run: |
+          TAG_VERSION="v1.${{ github.run_number }}"
+          git tag -a $TAG_VERSION -m "Release $TAG_VERSION" ${{ github.sha }}
+          echo "::set-output name=tag_version::$TAG_VERSION"
+        id: tag
+
+      - name: Push tag
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          tags: ${{ steps.tag.outputs.tag_version }}
+
   release:
     needs: build
     runs-on: ubuntu-latest
